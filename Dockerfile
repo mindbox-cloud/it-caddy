@@ -11,5 +11,9 @@ FROM caddy:${CADDY_VERSION}-alpine
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 ADD ./sniproxy.Caddyfile /etc/caddy
+ADD healthckecks /healthckecks
+
+RUN apk --update add curl bash \
+    && chmod +x /healthckecks/*
 
 CMD ["caddy", "docker-proxy"]
