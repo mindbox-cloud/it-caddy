@@ -10,6 +10,6 @@ RUN xcaddy build \
 FROM caddy:${CADDY_VERSION}-alpine
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
-ADD ./Caddyfile.sniproxy /etc/caddy
+ADD ./sniproxy.Caddyfile /etc/caddy
 
 CMD ["caddy", "docker-proxy"]
